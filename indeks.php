@@ -38,3 +38,43 @@ $queryHarga = "SELECT * FROM `harga_beras`"
 
         <button type="submit" name="btn-tambah">Tambah</button>
     </form>
+    <?php
+    if (isset($_POST['btn-tambah'])) {
+          $nama = htmlspecialchars($_POST['nama']);
+          $tanggungan = htmlspecialchars($_POST['tanggungan']);
+          $hb = htmlspecialchars($_POST['hb']);
+          $idHb = $db->tampil_Data_Satu("SELECT * FROM `harga_beras` WHERE `id`= $hb ");
+          $tb = intval($tanggungan) * intval($idHb['harga_beras']) * 4.3;
+          $NA = htmlspecialchars($_POST['NA']);
+
+          $queryInsert ="INSERT INTO `pembayar_zakat`(`nama`, `tanggungan`, `harga_beras`, `total_bayar`, `nama_amil`) VALUES ('$nama','$tanggungan','$hb','$tb','$NA')";
+          $db->Insert($queryInsert);
+    }
+    ?>
+    
+    <table border=1>
+        <thead>
+            <th>nama</th>
+            <th>tanggungan</th>
+            <th>harga_beras</th>
+            <th>total_bayar</th>
+            <th>nama_amil</th>
+        </thead>
+        <?php
+        $query = "SELECT *, harga_beras.harga_beras FROM pembayar_zakat INNER JOIN harga_beras ON pembayar_zakat.harga_beras=harga_beras.id";
+        foreach ($db->tampil_Data_Banyak($query) as $value) {
+            ?>
+                <tr>
+                    <td><?php echo $value['nama'] ?></td>
+                    <td><?php echo $value['tanggungan'] ?></td>
+                    <td><?php echo $value['harga_beras'] ?></td>
+                    <td><?php echo $value['total_bayar'] ?></td>
+                    <td><?php echo $value['nama_amil'] ?></td>
+                </tr>
+
+            <?php
+        }
+        ?>
+    </table>
+</body>
+</html>
