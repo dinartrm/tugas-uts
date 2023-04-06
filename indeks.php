@@ -2,6 +2,7 @@
 class koneksi
 {
   kerjaan syifahghghhgh
+  ajkanjka
 }
 
 
