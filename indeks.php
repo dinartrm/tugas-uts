@@ -78,3 +78,4 @@ $queryHarga = "SELECT * FROM `harga_beras`"
     </table>
 </body>
 </html>
+
