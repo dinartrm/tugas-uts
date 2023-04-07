@@ -1,0 +1,65 @@
+body {
+    width: 900px;
+    margin: 10px auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    background-color: azure;
+}
+
+.wrap .label fieldset {
+    background-color: rgb(120, 168, 184);
+    margin: 15px;
+}
+
+table {
+    margin: auto;
+    font-size: 18px;
+    padding: 15px;
+}
+
+table td {
+    transition: all .2s;
+}
+
+.data-tabel {
+    border-collapse: collapse;
+    font-size: 15px;
+    min-width: 537px;
+}
+
+.data-tabel th,
+.data-tabel td {
+    border: 1px solid #e1edff;
+    padding: 7px 17px;
+}
+
+.data-tabel caption {
+    margin: 15px;
+    font-size: larger;
+}
+
+.data-tabel thead th {
+    background-color: rgb(173, 173, 114);
+    color: #0b0101;
+    border-color: #2f2f2c !important;
+    text-transform: capitalize;
+}
+
+.data-tabel tbody td {
+    color: #353535;
+}
+
+.data-table tbody td:first-child,
+.data-table tbody td:nth-child(4),
+.data-table tbody td:last-child {
+text-align: right;
+}
+
+.data-table tbody tr:nth-child(odd) td {
+    background-color: #f4fbff;
+    }
+    .data-table tbody tr:hover td {
+    background-color: #ffffa2;
+    border-color: #ffff0f;
+    }

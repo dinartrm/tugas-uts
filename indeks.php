@@ -10,17 +10,33 @@ $queryHarga = "SELECT * FROM `harga_beras`"
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WOI ZAKAT</title>
+    <link rel = "stylesheet" href = "style.css">
+    <title>Zakat Zekat Zekat</title>
 </head>
 
 <body>
-    <form method="post">
-        <label for="nama">Nama</label>
-        <input name="nama" type="text"></input><br>
-
-        <label for="tanggungan">Tanggungan</label>
-        <input name="tanggungan" type="number"></input><br>
-        <select name="hb">
+   <form method="post">
+     <div class = "wrap">
+        <div class="header">
+            <h1> Data Pembayaran Zakat Zekat Zekat</h1>
+            <p>Pembayaran Zakat Masyarakat Perumahan Melati Semuanya Indah </p>
+        </div>
+        <div class= "label">
+        <fieldset>
+            <legend> </legend>
+            <p>
+                <label for="nama">Nama</label> <br>
+                <input name="nama" type="text" placeholder="Tulis Disini"></input><br>
+            </p>
+            <p>
+                <label for="tanggungan">Tanggungan</label><br>
+                <input name="tanggungan" type="number"></input><br>
+            </p>
+            <p>
+                <label for="NA">Nama Amil</label> <br>
+                <input name="NA" type="text"></input>
+            </p>
+            Harga Beras <select name="hb"> <br>
             <?php
             foreach ($db->tampil_Data_Banyak($queryHarga) as $key => $value) {
                 ?>
@@ -31,37 +47,45 @@ $queryHarga = "SELECT * FROM `harga_beras`"
                 <?php
                 }
             ?>
-        </select>
-
-        <label for="NA">Nama amil</label>
-        <input name="NA" type="text"></input>
-
-        <button type="submit" name="btn-tambah">Tambah</button>
+            </select> 
+            
+            <button type="submit" name="btn-tambah">Tambah</button>
+        </fieldset>
+            </div>
     </form>
+    </div>
     <?php
     if (isset($_POST['btn-tambah'])) {
           $nama = htmlspecialchars($_POST['nama']);
           $tanggungan = htmlspecialchars($_POST['tanggungan']);
           $hb = htmlspecialchars($_POST['hb']);
           $idHb = $db->tampil_Data_Satu("SELECT * FROM `harga_beras` WHERE `id`= $hb ");
-          $tb = intval($tanggungan) * intval($idHb['harga_beras']) * 4.3;
+          $tb = intval($tanggungan) * intval($idHb['harga_beras']);
           $NA = htmlspecialchars($_POST['NA']);
 
-          $queryInsert ="INSERT INTO `pembayar_zakat`(`nama`, `tanggungan`, `harga_beras`, `total_bayar`, `nama_amil`) VALUES ('$nama','$tanggungan','$hb','$tb','$NA')";
+          $queryInsert ="INSERT INTO `pembayaran_zakat`(`nama`, `tanggungan`, `harga_beras`, `total_bayar`, `nama_amil`) 
+          VALUES ('$nama','$tanggungan','$hb','$tb','$NA')";
           $db->Insert($queryInsert);
+    ?>
+      <meta http-equiv="refresh" content="0; url= index.php">
+    <?php
     }
     ?>
     
-    <table border=1>
+    <table class = "data-tabel">
+        <caption class="title"><b>Data Manusia yang Sudah Membayar Zakat</b> </caption>
         <thead>
+            <tr>
             <th>nama</th>
             <th>tanggungan</th>
             <th>harga_beras</th>
             <th>total_bayar</th>
             <th>nama_amil</th>
+            </tr>
         </thead>
-        <?php
-        $query = "SELECT *, harga_beras.harga_beras FROM pembayar_zakat INNER JOIN harga_beras ON pembayar_zakat.harga_beras=harga_beras.id";
+        <tbody>
+              <?php
+        $query = "SELECT *, harga_beras.harga_beras FROM pembayaran_zakat INNER JOIN harga_beras ON pembayaran_zakat.harga_beras=harga_beras.id";
         foreach ($db->tampil_Data_Banyak($query) as $value) {
             ?>
                 <tr>
@@ -75,7 +99,11 @@ $queryHarga = "SELECT * FROM `harga_beras`"
             <?php
         }
         ?>
+        </tbody>
+      
     </table>
+
+   
 </body>
 </html>
 
