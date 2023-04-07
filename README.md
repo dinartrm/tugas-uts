@@ -7,3 +7,4 @@ Nama Anggota:
   5. Syifa Rahmadani - 12110035
   
   DIBUAT DENGAN: VISUAL STUDIO CODE IDE
+  note: Nur Hayati mengerjakan di device yang sama bersama dengan Nurul Hafifah Caniago, sebab Nur Hayati belum memiliki laptop.
