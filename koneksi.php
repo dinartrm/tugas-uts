@@ -36,4 +36,5 @@ class koneksi {
     }
 }
 $db = new koneksi
+    
 ?>
