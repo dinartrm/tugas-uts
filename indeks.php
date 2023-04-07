@@ -67,7 +67,7 @@ $queryHarga = "SELECT * FROM `harga_beras`"
           VALUES ('$nama','$tanggungan','$hb','$tb','$NA')";
           $db->Insert($queryInsert);
     ?>
-      <meta http-equiv="refresh" content="0; url= index.php">
+      <meta http-equiv="refresh" content="0; url= indeks.php">
     <?php
     }
     ?>
