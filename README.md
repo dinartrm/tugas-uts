@@ -1,6 +1,6 @@
 # tugas-uts
 Nama Anggota:
-  1. Dinar Tri Muri - 12110008
+  1. Dinar Tri Murti - 12110008
   2. Indry Ramadanti - 12110014
   3. Nur Hayati - 12110026
   4. Nurul Hafifah Caniago - 12110027
